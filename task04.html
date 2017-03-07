@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{text-align: center;}
+        *{ font-size: 30px}
+        label{color: white; background-color: red;margin: 10px; font-size: 50px; padding: 10px}
+        #result{text-align: center}
+        .btn{margin-left: 20px}
+        button{border-radius: 20px}
+    </style>
+</head>
+<body>
+<div class="container">
+    <input id="number">
+    <button onclick="leftIn()">左侧入</button>
+    <button onclick="rightIn()">右侧入</button>
+    <button class="btn" onclick="leftOut()">左侧出</button>
+    <button onclick="rightOut()">右侧出</button>
+</div>
+<br>
+<div id="result"></div>
+
+<script>
+var datas = [];
+var data = "";
+function leftIn() {
+ data= document.getElementById("number").value;
+datas.unshift(data);
+render();
+}
+function leftOut() {
+    data= document.getElementById("number").value;
+    datas.shift();
+    render();
+}
+function rightIn(){
+    data= document.getElementById("number").value;
+    datas.push(data);
+    render();
+}
+function rightOut() {
+    data= document.getElementById("number").value;
+    datas.pop();
+    render();
+}
+function render() {
+    var str="";
+    for(var i=0,len=datas.length;i<len;i++){
+        str += "<label>"+datas[i]+"</label>"
+    }
+    document.getElementById("result").innerHTML = str;
+}
+</script>
+
+
+</body>
+</html>
